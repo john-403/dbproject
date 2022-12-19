@@ -1,0 +1,118 @@
+Docks:
+Dock_number   dock_size    dock_depth
+101	      12000	   10
+102	      15000        13 
+103	      10000        12
+104           20000        18	
+
+Parking:
+dock_number   ship_IMO_number  start_date   end_date
+102	      IMO 8812098      15/12/2022   20/12/2022
+104           IMO 8943776      17/12/2022   22/12/2022
+
+Ships:
+ship_IMO_number  ship_official_number  ship_country   ship_owners   ship_size   ship_container_quantity    ship_product_type
+IMO 8812098      0569		       Ireland        John Smith    13000 m^2   10500                      Industrial equipments
+IMO 8873110      0823                  Spain          Luis Ramos    11000       9000                       Agricultural Harvest
+IMO 8943776      0258                  Russia         Viktor Dugin  18000       15000                      Automobiles
+
+
+Containers:
+Container_ID   container_width   container_height   container_depth   ship_IMO_number  
+759933         66 cm             86 cm              104 cm             IMO 8873110 
+759934         66                86                 104		       IMO 8873110
+759935         66                86                 104                IMO 8873110
+661277         230               230                590		       IMO 8812098
+661278         230               230                590		       IMO 8812098
+661279         230               230                590		       IMO 8812098
+390012         460               460                1180	       IMO 8943776
+390013         460               460                1180               IMO 8943776
+390014         460               460                1180               IMO 8943776
+
+Product:
+product_name  product_category      product_weight  product_size   product_manufacturer
+Shaft         industrial equipment  25 kg           1.6 m^3          DirectIndustry
+Gear          industrial equipment  50              3.2              DirectIndustry
+Potato palet  Agricultural harvest  2               0.05             AgriGlobal
+wheat bag     Agricultural harvest  5               0.09             FreshAgri
+SUV           Automobile            2700            15.8              Toyota
+Sedan         Automobile            1300            10.9              Honda
+
+ProductInstance
+product_instance_ID  product_instance_productiondate  product_instance_expirydate   product_instance_quantity   product_instance_entrydate  product_name   container_ID
+58891422		10/12/2022			10/04/2023			100				11/12/2022          potato palet   759933		
+43308044                04/12/2022			NULL				1				15/12/2022	    shaft 	   661278
+10877876		06/11/2022			NULL			        1                       	17/12/2022  	    SUV            390014
+
+Staff:
+Staff_ID  staff_firstname  staff_lastname  staff_position  staff_phone  staff_email  		staff_address  staff_salary
+1000	  Eric		   White	   employee        70123987     eric.white@port.com	Beirut         2000$/month
+1001	  Tim		   King		   employee        76345876     tim.king@port.com       Byblos         2000 
+1002      Tom      	   Peters          employee	   79987456     tom.peters@port.com	Jounieh        2300
+1003	  Jake		   Roberts         administrator   70000111     jake.roberts@port.com   Beirut         5000
+1004	  Eric		   Smith           employee        70124578     eric.smith@port.com     Tripoli        2300
+1005	  John             Silver          employee        72808145     john.silver@port.com    Jounieh        2150
+1006      Terry            Blake           administrator   70000567     terry.blake@port.com    Beirut         5000
+1007      Roger            Smith           employee        76531097     roger.smith@port.com    Byblos         2150
+1008      Ron              Phillips        administrator   70111222     ron.phillips@port.com   Byblos         5000
+
+Join:
+staff_ID  team_number  start_date   end_date
+1000      1		10/10/2020  31/12/2022
+1001	  1             01/05/2019  31/12/2022
+1002      2             07/03/2021  31/12/2022
+1003      1             03/05/2014  NULL
+1004      2             17/06/2018  31/12/2022
+1005      3             05/04/2022  NULL
+1006      2             11/12/2011  NULL
+1007      3             14/11/2020  NULL
+1008	  3             09/01/2012  NULL
+
+Teams:
+team_number  team_size  team_administrator  team_task  		team_equipment
+1		3	1003                Unload Products	NULL
+2		3	1006                Fill Trucks		forklift
+3 	        3       1008                Unload Products     NULL
+
+Warehouse:
+warehouse_number  warehouse_size  warehouse_floors  warehouse_type
+101			1500        1               consumables
+202			5000        2               Automobiles
+303			3000        2               Standard
+
+Unload:
+product_name  warehouse_number  team_number
+potato palet   101               1
+SUV	       202               3
+
+Client:
+client_ID   client_firstname  client_lastname  client_phone_number  client_email  		client_address   client_payments  truck_physical_plateNB
+1122		Roger		Stones		72889663		roger.stones@gmail.com	  Zahle			5000$      237823   
+3345		Harry		Lee		70901234		harry.lee@gmail.com	  Beirut		75000 	   766422
+2345		Bob             Robertson       76003586                bob.robertson@gmail.com	  Jounieh               NULL	   576348
+
+Rent:
+warehouse_number  client_ID  start_date   end_date
+101		    1122     01/12/2022   01/01/2023
+202		    3345     01/12/2022   01/01/2023
+303                 2345     01/12/2022   01/01/2023
+
+TruckOP:
+truck_OP_brand   truck_OP_capacity  truck_OP_max_load   truck_OP_height
+Mercedes	 3 seats	     60 m^3		4.6 m
+Volvo		 2 seats             40               	4 m
+
+TruckPhysical:
+truck_physical_plateNB	 truck_physical_condition   truck_OP_brand
+766422			 Functioning			Mercedes
+498120			 Functioning			Mercedes
+576348                   Functioning			Mercedes
+682354			 In repair			Volvo
+237823			 Functioning			Volvo
+245976			 Functioning			Volvo
+
+Fill:
+product_instance_ID	team_number	truck_OP_brand
+10877876    	   	2		Mercedes
+58891422		2		Volvo
+
